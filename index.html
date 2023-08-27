@@ -130,6 +130,8 @@
 
   <script>
     const generateScriptBtn = document.getElementById("generateScriptBtn");
+    const copyScriptBtn = document.getElementById("copyScriptBtn");
+    const downloadScriptBtn = document.getElementById("downloadScriptBtn");
     const scriptOutput = document.getElementById("scriptOutput");
     const scriptCode = document.getElementById("scriptCode");
 
@@ -165,8 +167,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main
 
       scriptCode.textContent = generatedScript;
       scriptOutput.style.display = "block";
+    });
 
-     copyScriptBtn.addEventListener("click", () => {
+    copyScriptBtn.addEventListener("click", () => {
       const scriptText = scriptCode.textContent;
       navigator.clipboard.writeText(scriptText)
         .then(() => {
